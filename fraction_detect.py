@@ -305,12 +305,12 @@ def run(
                 data["time"] = line.split("Time:")[1].strip()
                 results.append(data)
 
-        # Convert the results to JSON
-        json_data = json.dumps(results, indent=4)
+        # Create the JSON object
+        json_data = {"data": results}
 
         # Write the JSON data to a file
         with open("Result.json", "w") as file:
-            file.write(json_data)
+            json.dump(json_data, file, indent=4)
 
     # Print results
     t = tuple(x.t / seen * 1e3 for x in dt)  # speeds per image
